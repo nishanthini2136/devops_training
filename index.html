@@ -121,6 +121,16 @@
             text-align: center;
         }
         
+        .text-center.section-subtitle {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .text-center.testimonials-subtitle {
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        
         /* Header Styles */
         header {
             background: rgba(44, 62, 80, 0.95);
@@ -130,6 +140,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
@@ -847,7 +858,7 @@
     <section class="features" id="features">
         <div class="container">
             <h2 class="section-title">Why Choose EduLearn?</h2>
-            <p class="text-center" style="max-width: 700px; margin: 0 auto 2rem;">Discover the perfect learning path for you with our comprehensive course catalog and world-class instructors.</p>
+            <p class="text-center section-subtitle">Discover the perfect learning path for you with our comprehensive course catalog and world-class instructors.</p>
             
             <div class="features-grid">
                 <div class="feature-card">
@@ -905,7 +916,7 @@
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">What Our Students Say</h2>
-            <p class="text-center" style="max-width: 700px; margin: 0 auto 4rem;">Don't just take our word for it. Here's what our students have to say about their learning experience.</p>
+            <p class="text-center testimonials-subtitle">Don't just take our word for it. Here's what our students have to say about their learning experience.</p>
             
             <div class="testimonial-grid">
                 <div class="testimonial-card">
@@ -1066,7 +1077,7 @@
     </footer>
     
     <!-- Scroll to Top Button -->
-    <a href="#" class="scroll-to-top" id="scrollToTop">
+    <a href="#" class="scroll-to-top" id="scrollToTop" title="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </a>
     

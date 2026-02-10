@@ -49,6 +49,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
@@ -434,6 +435,11 @@
             margin-bottom: 0.8rem;
         }
         
+        .values-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
         .footer-links a {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
@@ -545,7 +551,7 @@
                     <p>We combine the best of online and offline learning methods to create a comprehensive educational experience. Our courses are designed by industry experts and academic professionals to ensure you gain practical, real-world skills.</p>
                     
                     <h3>Our Values</h3>
-                    <ul style="list-style-type: none; padding-left: 0;">
+                    <ul class="values-list">
                         <li>• <strong>Excellence:</strong> We strive for the highest quality in everything we do.</li>
                         <li>• <strong>Innovation:</strong> We embrace new technologies and teaching methods.</li>
                         <li>• <strong>Accessibility:</strong> We believe education should be available to all.</li>
@@ -642,10 +648,10 @@
                     <h3>About EduLearn</h3>
                     <p>Empowering learners worldwide with quality education and innovative learning solutions since 2020.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 
@@ -688,7 +694,7 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <a href="#" class="scroll-to-top" id="scrollToTop">
+    <a href="#" class="scroll-to-top" id="scrollToTop" title="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </a>
     
