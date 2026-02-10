@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EduLearn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            line-height: 1.7;
+            color: var(--text);
+            background-color: #fff;
+            overflow-x: hidden;
+            padding-top: 80px; /* Add padding to account for fixed header */
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            #mainNav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--secondary);
+                padding: 1rem 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            #mainNav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0 1rem;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem 1rem;
+            }
+            
+            .header-content {
+                position: relative;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 250px;
+                height: 100vh;
+                background: var(--secondary);
+                padding: 6rem 2rem 2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.75rem 1rem;
+                border-radius: 4px;
+            }
+            
+            nav ul li a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 6rem 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 5rem 0;
+            background: #f9f9f9;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .member-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-about h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .footer-about p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo"><i class="fas fa-graduation-cap"></i> EduLearn</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="about.html" class="active">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="login.html" class="btn">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>About EduLearn</h1>
+            <p>Empowering learners worldwide with quality education and innovative learning solutions.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <p class="section-subtitle">Transforming education through innovation and technology</p>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Our Team">
+                </div>
+                <div class="about-text">
+                    <h3>Who We Are</h3>
+                    <p>EduLearn was founded in 2020 with a simple mission: to make quality education accessible to everyone, everywhere. We believe that learning should be engaging, interactive, and available at your fingertips.</p>
+                    <p>Our platform brings together expert instructors, cutting-edge technology, and a global community of learners to create an unparalleled educational experience.</p>
+                    
+                    <h3>Our Approach</h3>
+                    <p>We combine the best of online and offline learning methods to create a comprehensive educational experience. Our courses are designed by industry experts and academic professionals to ensure you gain practical, real-world skills.</p>
+                    
+                    <h3>Our Values</h3>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li>• <strong>Excellence:</strong> We strive for the highest quality in everything we do.</li>
+                        <li>• <strong>Innovation:</strong> We embrace new technologies and teaching methods.</li>
+                        <li>• <strong>Accessibility:</strong> We believe education should be available to all.</li>
+                        <li>• <strong>Community:</strong> We foster a supportive learning environment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>50,000+</h3>
+                    <p>Students Enrolled</p>
+                </div>
+                <div class="stat-item">
+                    <h3>200+</h3>
+                    <p>Expert Instructors</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Courses Available</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-subtitle">Passionate educators and industry experts dedicated to your success</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name">Sarah Johnson</h4>
+                        <span class="member-role">CEO & Founder</span>
+                        <p>Education technology expert with 15+ years of experience in online learning.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David Chen">
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name">David Chen</h4>
+                        <span class="member-role">Head of Curriculum</span>
+                        <p>Former university professor specializing in curriculum development.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maria Garcia">
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name">Maria Garcia</h4>
+                        <span class="member-role">Lead Instructor</span>
+                        <p>Industry professional with expertise in computer science and data science.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="James Wilson">
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name">James Wilson</h4>
+                        <span class="member-role">Student Success</span>
+                        <p>Dedicated to ensuring every student achieves their learning goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>About EduLearn</h3>
+                    <p>Empowering learners worldwide with quality education and innovative learning solutions since 2020.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Instructors</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learn City</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> info@edulearn.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduLearn. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#" class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <!-- JavaScript for Mobile Menu and Scroll to Top -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                mainNav.classList.toggle('active');
+            });
+        }
+        
+        // Close mobile menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+        
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+        
+        if (scrollToTopBtn) {
+            scrollToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EduLearn Online Learning Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6cf7;
+            --secondary-color: #6c757d;
+            --accent-color: #ff6b6b;
+            --light-bg: #f8f9fa;
+            --dark-text: #2d3748;
+            --light-text: #718096;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            padding-top: 80px; /* Add padding to account for fixed header */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            #mainNav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--secondary-color);
+                padding: 1rem 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            #mainNav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0 1rem;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem 1rem;
+            }
+            
+            .header-content {
+                position: relative;
+            }
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(74, 108, 247, 0.9), rgba(74, 108, 247, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            padding: 180px 0 80px;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        .breadcrumb a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-color);
+        }
+
+        .breadcrumb .separator {
+            margin: 0 5px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .contact-info:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .info-item i {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .info-content h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+
+        .info-content p, .info-content a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .info-content a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--light-bg);
+            color: var(--primary-color);
+            border-radius: 50%;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(74, 108, 247, 0.25);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: #3a5bd9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+
+        /* Map Section */
+        .map-section {
+            margin-top: 80px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #a0a0a0;
+            padding: 70px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header {
+                padding: 150px 0 60px;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .page-header h1 {
+                font-size: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-contact li {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 26px;
+            }
+            
+            .section-title h2 {
+                font-size: 24px;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo"><i class="fas fa-graduation-cap"></i> EduLearn</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                        <li><a href="login.html" class="btn">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">/</span>
+                <span>Contact</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Have questions or need assistance? Reach out to our team and we'll get back to you as soon as possible.</p>
+            </div>
+
+            <div class="contact-container">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out to us with any questions, concerns, or feedback. Our team is here to help you with your learning journey.</p>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-content">
+                            <h4>Our Location</h4>
+                            <p>123 Education Street, Learning City, LC 12345</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-content">
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:info@edulearn.com">info@edulearn.com</a></p>
+                            <p><a href="mailto:support@edulearn.com">support@edulearn.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="info-content">
+                            <h4>Call Us</h4>
+                            <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                            <p><a href="tel:+1987654321">+1 (987) 654-321</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425872426493!3d40.74076987932881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sMadison%20Square%20Garden!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About EduLearn</h3>
+                    <p>EduLearn is a leading online learning platform that offers high-quality courses taught by industry experts. Our mission is to make education accessible to everyone, everywhere.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Our Courses</a></li>
+                        <li><a href="#">Instructors</a></li>
+                        <li><a href="#">Become an Instructor</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Popular Courses</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Mobile App Development</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">Business Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>123 Education Street</p>
+                                <p>Learning City, LC 12345</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p><a href="mailto:info@edulearn.com">info@edulearn.com</a></p>
+                                <p><a href="mailto:support@edulearn.com">support@edulearn.com</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                                <p><a href="tel:+1987654321">+1 (987) 654-321</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 EduLearn. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> by <a href="#" style="color: var(--primary-color); text-decoration: none;">EduLearn Team</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainNav.style.display = mainNav.style.display === 'block' ? 'none' : 'block';
+                });
+                
+                // Close mobile menu when clicking on a nav link
+                const navLinks = mainNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            mainNav.style.display = 'none';
+                        }
+                    });
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        mainNav.style.display = '';
+                    } else if (window.innerWidth <= 768 && window.getComputedStyle(mobileMenuBtn).display !== 'none') {
+                        mainNav.style.display = 'none';
+                    }
+                });
+                
+                // Initialize mobile menu state
+                if (window.innerWidth <= 768) {
+                    mainNav.style.display = 'none';
+                }
+            }
+            
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Here you would typically send the form data to a server
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

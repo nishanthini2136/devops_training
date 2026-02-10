@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduLearn - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.7;
+            color: var(--text);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+        }
+        
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+            border-color: white;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 12rem 0 8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .hero-image {
+            margin-top: 4rem;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hero-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: #f9f9f9;
+            position: relative;
+        }
+        
+        .features .section-title {
+            margin-bottom: 4rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card:hover::before {
+            height: 100%;
+            opacity: 0.05;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .newsletter-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .newsletter-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .newsletter-text p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            max-width: 400px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            min-width: 250px;
+        }
+        
+        .newsletter-form .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form .btn:hover {
+            background: #d62c1a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: #ecf0f1;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            padding: 4rem 0;
+        }
+        
+        .footer-about .footer-logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            color: #bdc3c7;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-links i {
+            font-size: 0.7rem;
+            color: var(--primary);
+        }
+        
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--primary);
+            margin-top: 0.2rem;
+        }
+        
+        .contact-info a {
+            color: #bdc3c7;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            background: #0e151b;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-bottom-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .footer-legal {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-legal a {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-legal a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-legal span {
+            color: #3d4a56;
+            font-size: 0.8rem;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .payment-methods i {
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            transition: color 0.3s ease;
+        }
+        
+        .payment-methods i:hover {
+            color: var(--primary);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f4fc 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials .section-title {
+            margin-bottom: 4rem;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            border: 3px solid var(--primary);
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h4 {
+            margin-bottom: 0.2rem;
+            color: var(--dark);
+        }
+        
+        .testimonial-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .testimonial-rating {
+            color: #f1c40f;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: left;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: white;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+            
+            nav ul li a {
+                color: var(--dark);
+                display: block;
+                padding: 0.8rem 1rem;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card, 
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo"><i class="fas fa-graduation-cap"></i> EduLearn</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="login.html" class="btn">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Unlock Your Potential with Online Learning</h1>
+                <p>Join thousands of students worldwide and gain access to high-quality courses taught by industry experts. Learn at your own pace, anytime, anywhere.</p>
+                <div class="hero-buttons">
+                    <a href="courses.html" class="btn">Start Learning</a>
+                    <a href="#features" class="btn btn-outline">Explore More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Online Learning">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose EduLearn?</h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto 2rem;">Discover the perfect learning path for you with our comprehensive course catalog and world-class instructors.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Wide Range of Courses</h3>
+                    <p>Access hundreds of courses across various subjects and skill levels, from beginner to advanced. Continuously updated content to keep you ahead.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals and academic experts with years of practical experience in their respective fields.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <h3>Learn at Your Pace</h3>
+                    <p>Study whenever and wherever you want with our flexible learning options. Lifetime access to course materials.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certification</h3>
+                    <p>Earn recognized certificates upon course completion to showcase your skills to employers and advance your career.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Join a community of learners, participate in discussions, and get your questions answered by instructors and peers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your courses on any device, anytime. Our platform is fully responsive and works seamlessly across all devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Students Say</h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto 4rem;">Don't just take our word for it. Here's what our students have to say about their learning experience.</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "EduLearn has completely transformed my career. The courses are comprehensive and the instructors are top-notch. I landed my dream job after completing the Full Stack Development track!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Full Stack Developer</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The quality of courses on EduLearn is exceptional. The hands-on projects helped me build a strong portfolio that impressed my current employer. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Michael Chen</h4>
+                            <p>UX/UI Designer</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a working professional, I needed flexibility in my learning. EduLearn's self-paced courses allowed me to upskill without putting my career on hold. The community support is fantastic!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Data Scientist</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for the latest courses, updates, and exclusive offers.</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo"><i class="fas fa-graduation-cap"></i> EduLearn</a>
+                    <p>Empowering individuals through accessible and high-quality online education. Join our community of learners today and unlock your full potential.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="courses.html"><i class="fas fa-chevron-right"></i> Courses</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-laptop-code"></i> Web Development</a></li>
+                        <li><a href="#"><i class="fas fa-chart-line"></i> Data Science</a></li>
+                        <li><a href="#"><i class="fas fa-briefcase"></i> Business</a></li>
+                        <li><a href="#"><i class="fas fa-palette"></i> Design</a></li>
+                        <li><a href="#"><i class="fas fa-bullhorn"></i> Marketing</a></li>
+                        <li><a href="#"><i class="fas fa-ellipsis-h"></i> See All</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> <span>123 Learning St, Education City, 10001</span></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@edulearn.com">info@edulearn.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                        <li><i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 EduLearn. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <span>•</span>
+                        <a href="#">Terms of Service</a>
+                        <span>•</span>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fab fa-cc-paypal" title="PayPal"></i>
+                        <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <a href="#" class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <!-- JavaScript for Mobile Menu and Scroll to Top -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                mainNav.classList.toggle('active');
+            });
+        }
+        
+        // Close mobile menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+        
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+        
+        if (scrollToTopBtn) {
+            scrollToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

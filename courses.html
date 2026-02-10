@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - EduLearn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.7;
+            color: var(--text);
+            background-color: #fff;
+            overflow-x: hidden;
+            padding-top: 80px; /* Add padding to account for fixed header */
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: #34495e;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+        }
+        
+        .page-header {
+            background: #f8f9fa;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .courses {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .course-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .course-image {
+            height: 160px;
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .course-info {
+            padding: 1.5rem;
+        }
+        
+        .course-category {
+            display: inline-block;
+            background: #e8f4fc;
+            color: #3498db;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .course-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-instructor {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .course-price {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo"><i class="fas fa-graduation-cap"></i> EduLearn</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html" class="active">Courses</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="login.html" class="btn">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Courses</h1>
+            <p>Browse through our wide range of courses and start learning today</p>
+        </div>
+    </section>
+
+    <section class="courses">
+        <div class="container">
+            <div class="course-filters">
+                <button class="btn">All Categories</button>
+                <button class="btn btn-outline">Web Development</button>
+                <button class="btn btn-outline">Data Science</button>
+                <button class="btn btn-outline">Business</button>
+                <button class="btn btn-outline">Design</button>
+            </div>
+            
+            <div class="course-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-image" style="background: #3498db;">
+                        💻
+                    </div>
+                    <div class="course-info">
+                        <span class="course-category">Web Development</span>
+                        <h3 class="course-title">HTML & CSS Fundamentals</h3>
+                        <p class="course-instructor">By John Smith</p>
+                        <p>Learn the basics of web development with HTML5 and CSS3 from scratch.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.7 (1,234)</span>
+                            <span class="course-price">$49.99</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-image" style="background: #e74c3c;">
+                        📊
+                    </div>
+                    <div class="course-info">
+                        <span class="course-category">Data Science</span>
+                        <h3 class="course-title">Python for Data Analysis</h3>
+                        <p class="course-instructor">By Sarah Johnson</p>
+                        <p>Master data analysis with Python, Pandas, and NumPy for data science.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.8 (2,345)</span>
+                            <span class="course-price">$59.99</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-image" style="background: #2ecc71;">
+                        🎨
+                    </div>
+                    <div class="course-info">
+                        <span class="course-category">Design</span>
+                        <h3 class="course-title">UI/UX Design Principles</h3>
+                        <p class="course-instructor">By Michael Chen</p>
+                        <p>Learn the fundamentals of user interface and experience design.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.6 (1,876)</span>
+                            <span class="course-price">$54.99</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EduLearn. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
